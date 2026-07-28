@@ -1,4 +1,5 @@
 package main.java.com.trainconsist;
+import main.java.com.trainconsist.model.Bogie;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.Set;
+import java.util.Comparator;
 
 public class TrainConsistApp {
 
@@ -219,6 +221,41 @@ public class TrainConsistApp {
         System.out.println("AC Chair Capacity : "
                 + bogieCapacity.get("AC Chair"));
 
+        // =========================================
+// UC7 - Comparator Sorting
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC7 - SORT BOGIES BY CAPACITY");
+        System.out.println("========================================");
+
+        List<Bogie> bogies = new ArrayList<>();
+
+        bogies.add(new Bogie("Sleeper",72));
+        bogies.add(new Bogie("AC Chair",56));
+        bogies.add(new Bogie("First Class",24));
+
+        System.out.println("\nBefore Sorting\n");
+
+        for(Bogie bogie : bogies){
+
+            System.out.println(bogie);
+
+            System.out.println("------------------------");
+
+        }
+
+        bogies.sort(Comparator.comparingInt(Bogie::getCapacity));
+
+        System.out.println("\nAfter Sorting By Capacity\n");
+
+        for(Bogie bogie : bogies){
+
+            System.out.println(bogie);
+
+            System.out.println("------------------------");
+
+        }
 
         System.out.println("\nProgram Completed Successfully.");
     }
