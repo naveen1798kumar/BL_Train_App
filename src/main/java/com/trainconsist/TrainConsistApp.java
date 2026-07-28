@@ -451,6 +451,77 @@ public class TrainConsistApp {
 
         }
 
+        // =========================================
+// UC13 - Performance Comparison
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC13 - PERFORMANCE COMPARISON");
+        System.out.println("========================================");
+
+// -----------------------------
+// Loop-Based Filtering
+// -----------------------------
+        long loopStart = System.nanoTime();
+
+        List<Bogie> loopFiltered = new ArrayList<>();
+
+        for (Bogie bogie : bogies) {
+
+            if (bogie.getCapacity() > 50) {
+                loopFiltered.add(bogie);
+            }
+
+        }
+
+        long loopEnd = System.nanoTime();
+
+        long loopDuration = loopEnd - loopStart;
+
+// -----------------------------
+// Stream-Based Filtering
+// -----------------------------
+        long streamStart = System.nanoTime();
+
+        List<Bogie> streamFiltered = bogies.stream()
+                .filter(bogie -> bogie.getCapacity() > 50)
+                .collect(Collectors.toList());
+
+        long streamEnd = System.nanoTime();
+
+        long streamDuration = streamEnd - streamStart;
+
+// -----------------------------
+// Display Results
+// -----------------------------
+
+        System.out.println("\nLoop Filtered Bogies:");
+
+        for (Bogie bogie : loopFiltered) {
+
+            System.out.println(bogie);
+            System.out.println("----------------------------");
+
+        }
+
+        System.out.println("Loop Execution Time : "
+                + loopDuration + " ns");
+
+        System.out.println();
+
+        System.out.println("Stream Filtered Bogies:");
+
+        for (Bogie bogie : streamFiltered) {
+
+            System.out.println(bogie);
+            System.out.println("----------------------------");
+
+        }
+
+        System.out.println("Stream Execution Time : "
+                + streamDuration + " ns");
+
+
         System.out.println("\nProgram Completed Successfully.");
     }
 
