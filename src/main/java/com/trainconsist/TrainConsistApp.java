@@ -2,6 +2,8 @@ package main.java.com.trainconsist;
 import main.java.com.trainconsist.model.Bogie;
 import main.java.com.trainconsist.model.GoodsBogie;
 import main.java.com.trainconsist.exception.InvalidCapacityException;
+import main.java.com.trainconsist.exception.CargoSafetyException;
+import main.java.com.trainconsist.service.CargoAssignmentService;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -563,6 +565,47 @@ public class TrainConsistApp {
             System.out.println(e.getMessage());
 
         }
+
+
+        // =========================================
+// UC15 - Safe Cargo Assignment
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC15 - SAFE CARGO ASSIGNMENT");
+        System.out.println("========================================");
+
+        GoodsBogie goodsBogie =
+                new GoodsBogie("Rectangular", "Coal");
+
+        CargoAssignmentService cargoService =
+                new CargoAssignmentService();
+
+        try {
+
+            cargoService.assignCargo(goodsBogie, "Petroleum");
+
+        }
+        catch (CargoSafetyException e) {
+
+            System.out.println();
+
+            System.out.println("Exception Caught");
+
+            System.out.println(e.getMessage());
+
+        }
+        finally {
+
+            System.out.println();
+
+            System.out.println("Cargo Assignment Process Completed.");
+
+        }
+
+        System.out.println();
+
+        System.out.println("Application Continues...");
 
 
         System.out.println("\nProgram Completed Successfully.");
