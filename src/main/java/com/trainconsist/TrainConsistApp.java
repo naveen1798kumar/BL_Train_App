@@ -309,6 +309,32 @@ public class TrainConsistApp {
 
         }
 
+        // =========================================
+// UC10 - Calculate Total Seating Capacity
+// Using Stream reduce()
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC10 - TOTAL TRAIN SEATING CAPACITY");
+        System.out.println("========================================");
+
+        int totalCapacity = bogies.stream()
+                .map(Bogie::getCapacity)
+                .reduce(0, Integer::sum);
+
+        System.out.println("\nPassenger Bogies:");
+
+        for (Bogie bogie : bogies) {
+
+            System.out.println(bogie);
+
+            System.out.println("----------------------------");
+
+        }
+
+        System.out.println("\nTotal Seating Capacity : "
+                + totalCapacity);
+
         System.out.println("\nProgram Completed Successfully.");
     }
 
