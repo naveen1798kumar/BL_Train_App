@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.List;
 import java.util.Set;
 import java.util.Comparator;
+import java.util.stream.Collectors;
 
 public class TrainConsistApp {
 
@@ -254,6 +255,28 @@ public class TrainConsistApp {
             System.out.println(bogie);
 
             System.out.println("------------------------");
+
+        }
+
+        // =========================================
+        // UC8 - Stream API (Filter Bogies)
+        // =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC8 - FILTER PASSENGER BOGIES USING STREAM");
+        System.out.println("========================================");
+
+        List<Bogie> filteredBogies = bogies.stream()
+                .filter(bogie -> bogie.getCapacity() > 60)
+                .collect(Collectors.toList());
+
+        System.out.println("\nPassenger Bogies with Capacity > 60\n");
+
+        for (Bogie bogie : filteredBogies) {
+
+            System.out.println(bogie);
+
+            System.out.println("----------------------------");
 
         }
 
