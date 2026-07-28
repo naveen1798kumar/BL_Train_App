@@ -1,11 +1,23 @@
 package main.java.com.trainconsist.model;
 
+import main.java.com.trainconsist.exception.InvalidCapacityException;
+
 public class Bogie {
 
     private String name;
     private int capacity;
 
-    public Bogie(String name, int capacity) {
+    public Bogie(String name, int capacity)
+            throws InvalidCapacityException {
+
+        if (capacity <= 0) {
+
+            throw new InvalidCapacityException(
+                    "Invalid Capacity : Capacity must be greater than zero."
+            );
+
+        }
+
         this.name = name;
         this.capacity = capacity;
     }
@@ -28,7 +40,10 @@ public class Bogie {
 
     @Override
     public String toString() {
+
         return "Bogie Name : " + name +
                 "\nCapacity : " + capacity;
+
     }
+
 }

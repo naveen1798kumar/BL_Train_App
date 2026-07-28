@@ -1,6 +1,7 @@
 package main.java.com.trainconsist;
 import main.java.com.trainconsist.model.Bogie;
 import main.java.com.trainconsist.model.GoodsBogie;
+import main.java.com.trainconsist.exception.InvalidCapacityException;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -236,9 +237,17 @@ public class TrainConsistApp {
 
         List<Bogie> bogies = new ArrayList<>();
 
-        bogies.add(new Bogie("Sleeper",72));
-        bogies.add(new Bogie("AC Chair",56));
-        bogies.add(new Bogie("First Class",24));
+        try {
+
+            bogies.add(new Bogie("Sleeper",72));
+            bogies.add(new Bogie("AC Chair",56));
+            bogies.add(new Bogie("First Class",24));
+
+        } catch (InvalidCapacityException e) {
+
+            System.out.println(e.getMessage());
+
+        }
 
         System.out.println("\nBefore Sorting\n");
 
@@ -520,6 +529,40 @@ public class TrainConsistApp {
 
         System.out.println("Stream Execution Time : "
                 + streamDuration + " ns");
+
+
+        // =========================================
+// UC14 - Custom Exception
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC14 - INVALID BOGIE CAPACITY");
+        System.out.println("========================================");
+
+        try {
+
+            Bogie sleeper =
+                    new Bogie("Sleeper", 72);
+
+            System.out.println("\nCreated Successfully");
+
+            System.out.println(sleeper);
+
+            System.out.println();
+
+            Bogie invalid =
+                    new Bogie("AC Chair", -10);
+
+            System.out.println(invalid);
+
+        }
+        catch (InvalidCapacityException e) {
+
+            System.out.println("Exception Caught");
+
+            System.out.println(e.getMessage());
+
+        }
 
 
         System.out.println("\nProgram Completed Successfully.");
