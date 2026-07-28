@@ -3,6 +3,7 @@ package main.java.com.trainconsist;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -128,6 +129,56 @@ public class TrainConsistApp {
         System.out.println(trainFormation);
 
         System.out.println("\nTotal Bogies : " + trainFormation.size());
+
+
+        // =========================================
+// UC5 - LinkedHashSet
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC5 - LINKEDHASHSET TRAIN FORMATION");
+        System.out.println("========================================");
+
+        LinkedHashSet<String> orderedFormation = new LinkedHashSet<>();
+
+        System.out.println("\nAttaching Bogies...");
+
+        orderedFormation.add("Engine");
+        orderedFormation.add("Sleeper");
+        orderedFormation.add("Cargo");
+        orderedFormation.add("Guard");
+
+// Duplicate Entry
+        orderedFormation.add("Sleeper");
+
+        System.out.println("\nTrain Formation:");
+
+        for (String bogie : orderedFormation) {
+            System.out.println(bogie);
+        }
+
+        System.out.println("\nTotal Bogies : "
+                + orderedFormation.size());
+
+        System.out.println("\nChecking Cargo Bogie...");
+        System.out.println("Exists : "
+                + orderedFormation.contains("Cargo"));
+
+        System.out.println("\nChecking Pantry Bogie...");
+        System.out.println("Exists : "
+                + orderedFormation.contains("Pantry"));
+
+        System.out.println("\nAttempting to add duplicate 'Guard'...");
+        orderedFormation.add("Guard");
+
+        System.out.println("\nFinal Ordered Train Formation:");
+
+        for (String bogie : orderedFormation) {
+            System.out.println(bogie);
+        }
+
+        System.out.println("\nInsertion Order Preserved.");
+        System.out.println("Duplicate Bogies Automatically Ignored.");
 
 
         System.out.println("\nProgram Completed Successfully.");
