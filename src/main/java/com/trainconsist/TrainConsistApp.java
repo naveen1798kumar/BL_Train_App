@@ -12,6 +12,9 @@ import java.util.Set;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class TrainConsistApp {
 
     public static void main(String[] args) {
@@ -334,6 +337,71 @@ public class TrainConsistApp {
 
         System.out.println("\nTotal Seating Capacity : "
                 + totalCapacity);
+
+
+        // =========================================
+// UC11 - Regex Validation
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC11 - TRAIN ID & CARGO CODE VALIDATION");
+        System.out.println("========================================");
+
+// Sample Inputs
+        String trainId = "TRN-1234";
+        String cargoCode = "PET-AB";
+
+// Regex Patterns
+        String trainRegex = "TRN-\\d{4}";
+        String cargoRegex = "PET-[A-Z]{2}";
+
+// Compile Patterns
+        Pattern trainPattern = Pattern.compile(trainRegex);
+        Pattern cargoPattern = Pattern.compile(cargoRegex);
+
+// Create Matchers
+        Matcher trainMatcher = trainPattern.matcher(trainId);
+        Matcher cargoMatcher = cargoPattern.matcher(cargoCode);
+
+// Validation
+        System.out.println("\nTrain ID : " + trainId);
+
+        if (trainMatcher.matches()) {
+            System.out.println("Train ID Status : VALID");
+        } else {
+            System.out.println("Train ID Status : INVALID");
+        }
+
+        System.out.println();
+
+        System.out.println("Cargo Code : " + cargoCode);
+
+        if (cargoMatcher.matches()) {
+            System.out.println("Cargo Code Status : VALID");
+        } else {
+            System.out.println("Cargo Code Status : INVALID");
+        }
+
+// Invalid Example
+
+        String invalidTrain = "TRAIN12";
+
+        Matcher invalidMatcher =
+                trainPattern.matcher(invalidTrain);
+
+        System.out.println();
+
+        System.out.println("Train ID : " + invalidTrain);
+
+        if (invalidMatcher.matches()) {
+
+            System.out.println("Train ID Status : VALID");
+
+        } else {
+
+            System.out.println("Train ID Status : INVALID");
+
+        }
 
         System.out.println("\nProgram Completed Successfully.");
     }
