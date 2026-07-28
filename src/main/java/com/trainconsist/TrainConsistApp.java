@@ -2,6 +2,7 @@ package main.java.com.trainconsist;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -83,6 +84,51 @@ public class TrainConsistApp {
         System.out.println(bogieIds);
 
         System.out.println("\nFinal Bogie ID Count : " + bogieIds.size());
+
+        // =========================================
+// UC4 - Train Formation using LinkedList
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC4 - TRAIN FORMATION (LINKEDLIST)");
+        System.out.println("========================================");
+
+        LinkedList<String> trainFormation = new LinkedList<>();
+
+        System.out.println("\nCreating Train Formation...");
+
+        trainFormation.add("Engine");
+        trainFormation.add("Sleeper");
+        trainFormation.add("AC");
+        trainFormation.add("Cargo");
+        trainFormation.add("Guard");
+
+        System.out.println("\nInitial Train Formation:");
+        System.out.println(trainFormation);
+
+// Insert Pantry Car at position 2
+        System.out.println("\nAdding Pantry Car at Position 2...");
+        trainFormation.add(2, "Pantry Car");
+
+        System.out.println("\nTrain Formation After Insertion:");
+        System.out.println(trainFormation);
+
+// Display first and last bogie
+        System.out.println("\nFirst Bogie : " + trainFormation.getFirst());
+        System.out.println("Last Bogie  : " + trainFormation.getLast());
+
+// Remove first and last bogie
+        System.out.println("\nRemoving First Bogie...");
+        trainFormation.removeFirst();
+
+        System.out.println("Removing Last Bogie...");
+        trainFormation.removeLast();
+
+        System.out.println("\nFinal Train Formation:");
+        System.out.println(trainFormation);
+
+        System.out.println("\nTotal Bogies : " + trainFormation.size());
+
 
         System.out.println("\nProgram Completed Successfully.");
     }
