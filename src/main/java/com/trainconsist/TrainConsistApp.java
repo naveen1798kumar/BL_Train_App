@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.LinkedHashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.Set;
 
@@ -179,6 +181,43 @@ public class TrainConsistApp {
 
         System.out.println("\nInsertion Order Preserved.");
         System.out.println("Duplicate Bogies Automatically Ignored.");
+
+
+        // =========================================
+// UC6 - HashMap (Bogie Capacity Mapping)
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC6 - BOGIE CAPACITY MAPPING (HASHMAP)");
+        System.out.println("========================================");
+
+        Map<String, Integer> bogieCapacity = new HashMap<>();
+
+        System.out.println("\nMapping Bogies to Their Capacities...");
+
+        bogieCapacity.put("Sleeper", 72);
+        bogieCapacity.put("AC Chair", 56);
+        bogieCapacity.put("First Class", 24);
+
+        System.out.println("\nBogie Capacity Details:");
+
+        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
+
+            System.out.println("Bogie : " + entry.getKey());
+            System.out.println("Capacity : " + entry.getValue());
+            System.out.println("----------------------------");
+
+        }
+
+        System.out.println("Total Bogie Types : " + bogieCapacity.size());
+
+        System.out.println("\nChecking Capacity of Sleeper...");
+        System.out.println("Sleeper Capacity : "
+                + bogieCapacity.get("Sleeper"));
+
+        System.out.println("\nChecking Capacity of AC Chair...");
+        System.out.println("AC Chair Capacity : "
+                + bogieCapacity.get("AC Chair"));
 
 
         System.out.println("\nProgram Completed Successfully.");
