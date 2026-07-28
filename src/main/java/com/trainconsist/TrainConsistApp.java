@@ -280,6 +280,35 @@ public class TrainConsistApp {
 
         }
 
+        // =========================================
+// UC9 - Group Bogies using groupingBy()
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC9 - GROUP BOGIES USING GROUPINGBY()");
+        System.out.println("========================================");
+
+// Group Bogies by Name
+        Map<String, List<Bogie>> groupedBogies =
+                bogies.stream()
+                        .collect(Collectors.groupingBy(Bogie::getName));
+
+        System.out.println("\nGrouped Bogies:\n");
+
+        for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
+
+            System.out.println("Category : " + entry.getKey());
+
+            for (Bogie bogie : entry.getValue()) {
+
+                System.out.println("   " + bogie);
+
+            }
+
+            System.out.println("----------------------------");
+
+        }
+
         System.out.println("\nProgram Completed Successfully.");
     }
 
