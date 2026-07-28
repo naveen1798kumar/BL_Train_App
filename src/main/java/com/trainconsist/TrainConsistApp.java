@@ -1,5 +1,6 @@
 package main.java.com.trainconsist;
 import main.java.com.trainconsist.model.Bogie;
+import main.java.com.trainconsist.model.GoodsBogie;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -400,6 +401,53 @@ public class TrainConsistApp {
         } else {
 
             System.out.println("Train ID Status : INVALID");
+
+        }
+
+        // =========================================
+// UC12 - Goods Bogie Safety Validation
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC12 - SAFETY COMPLIANCE CHECK");
+        System.out.println("========================================");
+
+        List<GoodsBogie> goodsBogies = new ArrayList<>();
+
+        goodsBogies.add(new GoodsBogie("Cylindrical", "Petroleum"));
+        goodsBogies.add(new GoodsBogie("Rectangular", "Coal"));
+        goodsBogies.add(new GoodsBogie("Rectangular", "Steel"));
+
+        System.out.println("\nGoods Bogies:");
+
+        for (GoodsBogie bogie : goodsBogies) {
+
+            System.out.println(bogie);
+
+            System.out.println("----------------------------");
+
+        }
+
+        boolean safe = goodsBogies.stream()
+                .allMatch(bogie ->
+
+                        !bogie.getType().equalsIgnoreCase("Cylindrical")
+
+                                ||
+
+                                bogie.getCargo().equalsIgnoreCase("Petroleum")
+
+                );
+
+        System.out.println();
+
+        if (safe) {
+
+            System.out.println("Train Safety Status : SAFE");
+
+        } else {
+
+            System.out.println("Train Safety Status : NOT SAFE");
 
         }
 
