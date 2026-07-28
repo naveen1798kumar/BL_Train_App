@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Comparator;
 import java.util.stream.Collectors;
+import java.util.Arrays;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -651,6 +652,36 @@ public class TrainConsistApp {
         }
 
         System.out.println();
+
+        // =========================================
+// UC17 - Arrays.sort()
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC17 - SORT BOGIE NAMES USING ARRAYS.SORT()");
+        System.out.println("========================================");
+
+// Bogie Type Names
+        String[] bogieNames = {
+                "Sleeper",
+                "First Class",
+                "AC Chair",
+                "Pantry",
+                "Cargo"
+        };
+
+        System.out.println("\nBefore Sorting:");
+
+        System.out.println(Arrays.toString(bogieNames));
+
+// Built-in Sorting
+        Arrays.sort(bogieNames);
+
+        System.out.println("\nAfter Sorting:");
+
+        System.out.println(Arrays.toString(bogieNames));
+
+        System.out.println("\nAlphabetical Order Achieved.");
 
 
         System.out.println("\nProgram Completed Successfully.");
