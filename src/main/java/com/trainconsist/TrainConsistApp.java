@@ -803,6 +803,40 @@ public class TrainConsistApp {
 
         }
 
+        // =========================================
+// UC20 - Exception Handling During Search
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC20 - EXCEPTION HANDLING DURING SEARCH");
+        System.out.println("========================================");
+
+// Empty Train Bogie Collection
+        List<String> searchBogies = new ArrayList<>();
+
+        System.out.println("\nChecking Train Bogie Collection...");
+
+        try {
+
+            if (searchBogies.isEmpty()) {
+
+                throw new IllegalStateException(
+                        "Search cannot be performed. No bogies are available in the train."
+                );
+
+            }
+
+            System.out.println("Searching Bogies...");
+
+        } catch (IllegalStateException e) {
+
+            System.out.println("\nException Caught");
+            System.out.println(e.getMessage());
+
+        }
+
+        System.out.println("\nApplication Continues Successfully.");
+
 
         System.out.println("\nProgram Completed Successfully.");
     }
