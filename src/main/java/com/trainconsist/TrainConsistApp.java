@@ -737,6 +737,73 @@ public class TrainConsistApp {
 
         }
 
+        // =========================================
+// UC19 - Binary Search for Bogie ID
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC19 - BINARY SEARCH FOR BOGIE ID");
+        System.out.println("========================================");
+
+// Sorted Bogie IDs
+        String[] sortedBogieIds = {
+                "BG101",
+                "BG102",
+                "BG105",
+                "BG108",
+                "BG110"
+        };
+
+        String binarySearchKey = "BG108";
+
+        System.out.println("\nSorted Bogie IDs:");
+
+        for (String id : sortedBogieIds) {
+            System.out.print(id + " ");
+        }
+
+        System.out.println();
+
+        System.out.println("\nSearching for Bogie ID : " + binarySearchKey);
+
+        int low = 0;
+        int high = sortedBogieIds.length - 1;
+
+        boolean binarySearchFound = false;
+
+        while (low <= high) {
+
+            int mid = (low + high) / 2;
+
+            int comparison = sortedBogieIds[mid].compareTo(binarySearchKey);
+
+            if (comparison == 0) {
+
+                binarySearchFound = true;
+
+                System.out.println("Bogie Found at Index : " + mid);
+
+                break;
+
+            } else if (comparison < 0) {
+
+                low = mid + 1;
+
+            } else {
+
+                high = mid - 1;
+
+            }
+
+        }
+
+        if (!binarySearchFound) {
+
+            System.out.println("Bogie Not Found");
+
+        }
+
+
         System.out.println("\nProgram Completed Successfully.");
     }
 
