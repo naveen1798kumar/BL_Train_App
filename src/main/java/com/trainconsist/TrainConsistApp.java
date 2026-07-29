@@ -683,6 +683,59 @@ public class TrainConsistApp {
 
         System.out.println("\nAlphabetical Order Achieved.");
 
+        // =========================================
+// UC18 - Linear Search for Bogie ID
+// =========================================
+
+        System.out.println("\n========================================");
+        System.out.println("UC18 - LINEAR SEARCH FOR BOGIE ID");
+        System.out.println("========================================");
+
+        String[] searchBogieIds = {
+                "BG105",
+                "BG101",
+                "BG110",
+                "BG102",
+                "BG108"
+        };
+
+        String searchBogieId = "BG102";
+
+        System.out.println("\nAvailable Bogie IDs:");
+
+        for (String id : searchBogieIds) {
+
+            System.out.print(id + " ");
+
+        }
+
+        System.out.println();
+
+        System.out.println("\nSearching for : " + searchBogieId);
+
+        boolean bogieFound = false;
+
+        for (String id : searchBogieIds) {
+
+            if (id.equals(searchBogieId)) {
+
+                bogieFound = true;
+
+                break;
+
+            }
+
+        }
+
+        if (bogieFound) {
+
+            System.out.println("Result : Bogie Found");
+
+        } else {
+
+            System.out.println("Result : Bogie Not Found");
+
+        }
 
         System.out.println("\nProgram Completed Successfully.");
     }
